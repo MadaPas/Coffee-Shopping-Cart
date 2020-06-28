@@ -1,0 +1,55 @@
+<%- include("../_layouts/adminHeader") %>
+
+<h2 class="page-title">Edit a Product</h2>
+<a href="/admin/products"><button type="button" class="btn btn-dark">Back to all products</button></a>
+<br /><br />
+
+<!--Form for editing a product-->
+<form method="POST" action="/admin/products/editproduct/<%= id %>" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="">Title</label>
+    <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title" />
+  </div>
+
+  <div class="form-group">
+    <label for="">Description</label>
+    <textarea name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="">Category</label>
+    <select name="category" class="form-control">
+      <% categories.forEach((cat) => { %>
+      <option value="<%= cat.slug %>" <% if(cat.slug == category){ %> selected="selected" <% } %>><%= cat.title %></option>
+      <% }); %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="">Price</label>
+    <input type="text" class="form-control" name="price" value="<%= price %>" placeholder="Price" />
+  </div>
+
+  <div class="form-group">
+    <label for="">Current Image</label>
+    <p>
+      <% if(image == "") { %>
+      <img id="imgThumb" src="/images/noimage.png" alt="">
+      <% } else { %>
+      <img id="imgThumb" src="/productImages/<%= id %>/<%= image %>" alt="">
+      <% } %>
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label for="">Upload Image</label>
+    <input type="file" class="form-control" value="<%= image %>" name="image" id="img" />
+    <img src="#" id="imgPreview" alt="" />
+  </div>
+  
+  <input type="hidden" name="pimage" value="<%= image %>">
+  <button class="btn btn-dark">Submit</button>
+</form>
+<hr>
+
+<%- include("../_layouts/adminFooter") %>

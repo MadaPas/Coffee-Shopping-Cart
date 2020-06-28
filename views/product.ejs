@@ -1,0 +1,28 @@
+<%- include("./_layouts/header") %>
+
+
+<h1 class="page-header"><%= product.title %></h1>
+<hr />
+
+<!--displaying a product (product detail page)-->
+<div class="row">
+  <div class="col-xs-12 col-md-5">
+    <img class="productImage" src="/productImages/<%= product.id %>/<%= product.image%>" alt="" />
+    <br />
+  </div>
+  <div class="col-xs-12 col-md-7">
+    <p><%= product.desc %></p>
+    <p>Dkk. <%= parseFloat(product.price).toFixed(2) %></p>
+    <% if(loggedIn) { %>
+    <a href="/cart/add/<%= product.slug %>"><button type="button" class="btn btn-dark">Add to cart</button></a>
+    <% } else { %>
+    <p><b>You must be logged in to purchase items.</b></p>
+  
+    <% } %>
+  </div>
+  <div class="col-xs-12">
+  </div>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br />
+<%- include("./_layouts/footer") %>

@@ -1,0 +1,37 @@
+<%- include("../_layouts/adminHeader") %>
+
+<h2 class="page-title">Pages</h2>
+<a href="/admin/pages/addpage"><button type="button" class="btn btn-dark">Add a new page</button></a>
+<br /><br />
+
+<!--Table displaying pages-->
+<table class="table table-striped sorting">
+  <thead>
+    <tr class="home">
+      <th>Title</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% pages.forEach((page) => { %>
+    <tr id="id_<%= page._id %>" class="<%= page.slug %>">
+      <td><%= page.title %></td>
+      <td><a href="/admin/pages/editpage/<%= page._id %>"><button type="button" class="btn btn-dark">Edit</button></a>
+      </td>
+      <% if (page.slug == "home") { %>
+      <td></td>
+      <% } else { %>
+      <td>
+        <a class="confirmDeletion" href="/admin/pages/deletepage/<%= page._id %>"><button type="button"
+            class="btn btn-dark">Delete</button></a>
+      </td>
+      <% } %>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+
+<br /><br /><br /><br /><br /><br /><br />
+<%- include("../_layouts/adminFooter") %>

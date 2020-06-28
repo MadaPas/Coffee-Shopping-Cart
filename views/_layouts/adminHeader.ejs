@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./helpers/adminHd.ejs") %>
+
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="/" target="_blank">CoffeeHouse</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+        <ul class="navbar-nav mr-auto">
+            <a class="nav-link" href="/admin/pages"><button type="button" class="btn btn-outline-secondary">Pages</button></a>
+            <a class="nav-link" href="/admin/categories"><button type="button" class="btn btn-outline-secondary">Categories</button></a>
+            <a class="nav-link" href="/admin/products"><button type="button" class="btn btn-outline-secondary">Products</button></a>
+        </ul>
+        <ul class="navbar-nav">
+            <a class="nav-link" href="/users/logout"><button type="button" class="btn btn-outline-secondary">Log Out</button></a>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <br/><br/><br/><br/>
+      <%- messages('messages', locals) %> 
+      <% if(errors) { %> <%
+      errors.forEach(function(error){ %>
+      <div class="alert alert-danger">
+        <%= error.msg %>
+      </div>
+      <% }); %> 
+      <% } %>
