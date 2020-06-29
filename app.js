@@ -183,6 +183,7 @@ app.use("/admin/categories", adminCategories);
 const adminProducts = require("./routes/admin-area/adminProducts");
 app.use("/admin/products", adminProducts);
 
+
 /* Start the server */
 var port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server started on port ${port}.`));

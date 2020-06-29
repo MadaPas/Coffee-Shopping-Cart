@@ -24,6 +24,7 @@ router.get("/", isAdmin, (req, res) => {
   });
 });
 
+
 /* Get add product */
 router.get("/addproduct", isAdmin, (req, res) => {
   var title = "";
@@ -40,6 +41,7 @@ router.get("/addproduct", isAdmin, (req, res) => {
     });
   });
 });
+
 
 /* Post add product */
 router.post("/addproduct", (req, res) => {

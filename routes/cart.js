@@ -7,9 +7,11 @@ var Product = require("../models/product");
 /*
  *  Get add product to cart
  */
-router.get("/add/:product", async (req, res) => {
+router.get("/add/:product", (req, res) => {
   var slug = req.params.product;
-  await Product.findOne({ slug: slug }, (err, product) => {
+  Product.findOne({
+    slug: slug
+  }, (err, product) => {
     if (err) console.log(err);
     if (typeof req.session.cart == "undefined") {
       req.session.cart = [];
@@ -109,7 +111,7 @@ router.get("/clear", (req, res) => {
  */
 router.get("/order", (req, res) => {
   delete req.session.cart;
-  
+
   req.flash("success", "Ordered Placed!");
   res.redirect("/");
 });

@@ -32,7 +32,7 @@ router.get("/register", (req, res) => {
 /*
  * Post register
  */
-router.post("/register", async (req, res) => {
+router.post("/register", (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const username = req.body.username;
@@ -54,7 +54,7 @@ router.post("/register", async (req, res) => {
       title: "Register"
     });
   } else {
-    await User.findOne({ username: username }, (err, user) => {
+    User.findOne({ username: username }, (err, user) => {
       if (err) console.log(err);
       if (user) {
         req.flash("danger", "Username exists, choose another!");

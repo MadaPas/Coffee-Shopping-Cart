@@ -3,8 +3,8 @@ const router = express.Router();
 /*
  *  Get /
  */
-router.get("/", async (req, res) => {
-  await Page.findOne({ slug: "home" }, (err, page) => {
+router.get("/",  (req, res) => {
+   Page.findOne({ slug: "home" }, (err, page) => {
     if (err) console.log(err);
     res.render("index", {
       title: page.title,
@@ -16,9 +16,9 @@ router.get("/", async (req, res) => {
 /*
  *  Get a page
  */
-router.get("/:slug", async (req, res) => {
+router.get("/:slug",  (req, res) => {
   var slug = req.params.slug;
-  await Page.findOne({ slug: slug }, (err, page) => {
+  Page.findOne({ slug: slug }, (err, page) => {
     if (err) console.log(err);
     if (!page) res.redirect("/");
     else {
